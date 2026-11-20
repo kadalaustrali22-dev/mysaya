@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ma'ruf — Portfolio</title>
+  <meta name="description" content="Ma'ruf — Information Technology Systems student at UMPRI. PHP developer and web technology enthusiast." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+          },
+          colors: {
+            surface: {
+              50:  '#fafaf9',
+              100: '#f5f5f4',
+              200: '#e7e5e4',
+              300: '#d6d3d1',
+              400: '#a8a29e',
+              500: '#78716c',
+              600: '#57534e',
+              700: '#44403c',
+              800: '#292524',
+              900: '#1c1917',
+              950: '#0c0a09',
+            },
+            accent: {
+              DEFAULT: '#059669',
+              light:   '#10b981',
+              dark:    '#047857',
+              subtle:  '#d1fae5',
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-surface-50 text-surface-800 dark:bg-surface-950 dark:text-surface-200 font-sans antialiased transition-colors duration-300">
+
+  <!-- ═══════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#hero" class="text-lg font-semibold tracking-tight text-surface-900 dark:text-white hover:text-accent transition-colors">
+        ma'ruf<span class="text-accent">.</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-surface-500 dark:text-surface-400">
+        <li><a href="#about" class="nav-link hover:text-surface-900 dark:hover:text-white transition-colors">About</a></li>
+        <li><a href="#skills" class="nav-link hover:text-surface-900 dark:hover:text-white transition-colors">Skills</a></li>
+        <li><a href="#projects" class="nav-link hover:text-surface-900 dark:hover:text-white transition-colors">Projects</a></li>
+        <li><a href="#contact" class="nav-link hover:text-surface-900 dark:hover:text-white transition-colors">Contact</a></li>
+      </ul>
+
+      <!-- Right side: Social icons + Theme toggle + Mobile menu -->
+      <div class="flex items-center gap-3">
+
+        <!-- Social Icons (Desktop) -->
+        <div class="hidden md:flex items-center gap-2">
+          <a href="https://www.instagram.com/maruf_s400/" target="_blank" rel="noopener noreferrer"
+             class="p-2 rounded-lg text-surface-400 hover:text-accent hover:bg-accent/10 transition-all" aria-label="Instagram">
+            <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/kadalaustrali22-dev" target="_blank" rel="noopener noreferrer"
+             class="p-2 rounded-lg text-surface-400 hover:text-accent hover:bg-accent/10 transition-all" aria-label="GitHub">
+            <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle"
+                class="p-2 rounded-lg text-surface-400 hover:text-surface-700 dark:hover:text-surface-200 hover:bg-surface-200/60 dark:hover:bg-surface-800 transition-all"
+                aria-label="Toggle dark mode">
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>
+          </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn"
+                class="md:hidden p-2 rounded-lg text-surface-400 hover:text-surface-700 dark:hover:text-surface-200 hover:bg-surface-200/60 dark:hover:bg-surface-800 transition-all"
+                aria-label="Toggle menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"/>
+            <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-surface-200/60 dark:border-surface-800 bg-surface-50/95 dark:bg-surface-950/95 backdrop-blur-md">
+      <div class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-3">
+        <a href="#about"    class="nav-link py-2 text-sm font-medium text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white transition-colors">About</a>
+        <a href="#skills"   class="nav-link py-2 text-sm font-medium text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white transition-colors">Skills</a>
+        <a href="#projects" class="nav-link py-2 text-sm font-medium text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white transition-colors">Projects</a>
+        <a href="#contact"  class="nav-link py-2 text-sm font-medium text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white transition-colors">Contact</a>
+        <div class="flex items-center gap-2 pt-2 border-t border-surface-200/60 dark:border-surface-800">
+          <a href="https://www.instagram.com/maruf_s400/" target="_blank" rel="noopener noreferrer"
+             class="p-2 rounded-lg text-surface-400 hover:text-accent transition-colors" aria-label="Instagram">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/kadalaustrali22-dev" target="_blank" rel="noopener noreferrer"
+             class="p-2 rounded-lg text-surface-400 hover:text-accent transition-colors" aria-label="GitHub">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="hero" class="min-h-screen flex items-center pt-20">
+    <div class="max-w-5xl mx-auto px-6 w-full">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+
+        <!-- Text Content -->
+        <div class="order-2 md:order-1 space-y-6">
+          <div class="space-y-2">
+            <p class="text-sm font-mono font-medium text-accent tracking-wide animate-fade-in">Hello, I'm</p>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-surface-900 dark:text-white leading-[1.1] animate-fade-in-up">
+              Ma'ruf
+            </h1>
+            <p class="text-lg sm:text-xl text-surface-500 dark:text-surface-400 font-light leading-relaxed animate-fade-in-up delay-100">
+              Information Technology Systems student at <span class="font-medium text-surface-700 dark:text-surface-300">UMPRI</span>
+            </p>
+          </div>
+
+          <p class="text-base text-surface-500 dark:text-surface-400 leading-relaxed max-w-lg animate-fade-in-up delay-200">
+            Passionate about technology and building functional, well-structured digital solutions. Proficient in PHP and modern web technologies.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap items-center gap-4 animate-fade-in-up delay-300">
+            <a href="#projects"
+               class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white text-sm font-medium rounded-lg hover:bg-accent-dark transition-colors shadow-sm hover:shadow-md">
+              View Projects
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              </svg>
+            </a>
+            <a href="#contact"
+               class="inline-flex items-center gap-2 px-6 py-3 border border-surface-300 dark:border-surface-700 text-surface-700 dark:text-surface-300 text-sm font-medium rounded-lg hover:border-accent hover:text-accent dark:hover:border-accent dark:hover:text-accent transition-colors">
+              Get in Touch
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex items-center gap-3 pt-2 animate-fade-in-up delay-400">
+            <a href="https://www.instagram.com/maruf_s400/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-sm text-surface-400 hover:text-accent transition-colors group">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+              <span class="group-hover:underline underline-offset-4">@maruf_s400</span>
+            </a>
+            <span class="text-surface-300 dark:text-surface-700">·</span>
+            <a href="https://github.com/kadalaustrali22-dev" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-sm text-surface-400 hover:text-accent transition-colors group">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <span class="group-hover:underline underline-offset-4">kadalaustrali22-dev</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Profile Photo (Hover Swap) -->
+        <div class="order-1 md:order-2 flex justify-center animate-fade-in">
+          <div id="profile-photo"
+               class="profile-photo-container relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-surface-900/5 dark:shadow-black/20 ring-1 ring-surface-200/80 dark:ring-surface-800">
+            <img src="assets/photo-1.jpg"
+                 alt="Ma'ruf — Photo 1"
+                 class="profile-img profile-img-primary absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-100" />
+            <img src="assets/photo-2.jpg"
+                 alt="Ma'ruf — Photo 2"
+                 class="profile-img profile-img-secondary absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-0" />
+            <!-- Subtle corner accent -->
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-accent/60 via-accent/30 to-transparent"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="about" class="py-24 sm:py-32">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <!-- Section Header -->
+      <div class="mb-16 animate-on-scroll">
+        <p class="text-sm font-mono font-medium text-accent tracking-wide mb-2">01 / About</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-white">A bit about me</h2>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-12 md:gap-16">
+
+        <!-- Bio Text -->
+        <div class="md:col-span-3 space-y-5 animate-on-scroll">
+          <p class="text-base leading-relaxed text-surface-600 dark:text-surface-400">
+            I am Ma'ruf, an Information Technology Systems student at <strong class="text-surface-800 dark:text-surface-200 font-medium">Universitas Muhammadiyah Pringsewu (UMPRI)</strong> with a strong interest in technology. I understand several programming languages including PHP and other web technologies.
+          </p>
+          <p class="text-base leading-relaxed text-surface-600 dark:text-surface-400">
+            I continue to grow my skills in building functional, well-structured digital solutions. I'm passionate about clean code, good architecture, and the craft of solving real problems through software.
+          </p>
+          <p class="text-base leading-relaxed text-surface-600 dark:text-surface-400">
+            When I'm not coding, I explore new tools and frameworks, contribute to open-source projects, and keep up with the evolving tech landscape.
+          </p>
+        </div>
+
+        <!-- Quick Info Card -->
+        <div class="md:col-span-2 animate-on-scroll">
+          <div class="p-6 rounded-xl bg-surface-100/80 dark:bg-surface-900/50 border border-surface-200/60 dark:border-surface-800/60 space-y-4">
+            <div>
+              <p class="text-xs font-mono text-surface-400 dark:text-surface-500 uppercase tracking-wider mb-1">Education</p>
+              <p class="text-sm font-medium text-surface-800 dark:text-surface-200">Information Technology Systems</p>
+              <p class="text-sm text-surface-500 dark:text-surface-400">UMPRI — Universitas Muhammadiyah Pringsewu</p>
+            </div>
+            <div class="border-t border-surface-200/60 dark:border-surface-800/60 pt-4">
+              <p class="text-xs font-mono text-surface-400 dark:text-surface-500 uppercase tracking-wider mb-1">Focus</p>
+              <p class="text-sm font-medium text-surface-800 dark:text-surface-200">Web Development & Software Engineering</p>
+            </div>
+            <div class="border-t border-surface-200/60 dark:border-surface-800/60 pt-4">
+              <p class="text-xs font-mono text-surface-400 dark:text-surface-500 uppercase tracking-wider mb-1">Languages</p>
+              <p class="text-sm font-medium text-surface-800 dark:text-surface-200">PHP, JavaScript, HTML, CSS, SQL</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SKILLS SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="skills" class="py-24 sm:py-32 bg-surface-100/50 dark:bg-surface-900/30">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <!-- Section Header -->
+      <div class="mb-16 animate-on-scroll">
+        <p class="text-sm font-mono font-medium text-accent tracking-wide mb-2">02 / Skills</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-white">Tech stack & tools</h2>
+      </div>
+
+      <!-- Skills Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll">
+
+        <!-- Skill Card: Backend -->
+        <div class="skill-card group p-6 rounded-xl bg-white dark:bg-surface-900 border border-surface-200/60 dark:border-surface-800/60 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">Backend Development</h3>
+          <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-3">Server-side logic, APIs, and database management.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">REST API</span>
+            <span class="skill-tag">Laravel</span>
+          </div>
+        </div>
+
+        <!-- Skill Card: Frontend -->
+        <div class="skill-card group p-6 rounded-xl bg-white dark:bg-surface-900 border border-surface-200/60 dark:border-surface-800/60 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">Frontend Development</h3>
+          <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-3">Responsive interfaces with clean, semantic markup.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <!-- Skill Card: Tools -->
+        <div class="skill-card group p-6 rounded-xl bg-white dark:bg-surface-900 border border-surface-200/60 dark:border-surface-800/60 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.1-3.396A1.5 1.5 0 016 10.467V5.25a1.5 1.5 0 011.5-1.5h9a1.5 1.5 0 011.5 1.5v5.217a1.5 1.5 0 01-.32 1.307l-5.1 3.396a1.5 1.5 0 01-1.66 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15.75v5.25m-4.5-3h9"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">Tools & Workflow</h3>
+          <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-3">Modern development tools and version control.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Terminal</span>
+          </div>
+        </div>
+
+        <!-- Skill Card: Fundamentals -->
+        <div class="skill-card group p-6 rounded-xl bg-white dark:bg-surface-900 border border-surface-200/60 dark:border-surface-800/60 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">CS Fundamentals</h3>
+          <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-3">Core computer science and software engineering.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Data Structures</span>
+            <span class="skill-tag">Algorithms</span>
+            <span class="skill-tag">OOP</span>
+          </div>
+        </div>
+
+        <!-- Skill Card: Database -->
+        <div class="skill-card group p-6 rounded-xl bg-white dark:bg-surface-900 border border-surface-200/60 dark:border-surface-800/60 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">Database</h3>
+          <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-3">Relational databases and query optimization.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">phpMyAdmin</span>
+          </div>
+        </div>
+
+        <!-- Skill Card: Learning -->
+        <div class="skill-card group p-6 rounded-xl bg-white dark:bg-surface-900 border border-surface-200/60 dark:border-surface-800/60 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold text-surface-900 dark:text-white mb-2">Currently Learning</h3>
+          <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-3">Expanding into modern frameworks and tools.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">TypeScript</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       PROJECTS SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="projects" class="py-24 sm:py-32">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <!-- Section Header -->
+      <div class="mb-16 animate-on-scroll">
+        <p class="text-sm font-mono font-medium text-accent tracking-wide mb-2">03 / Projects</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-white">Selected work</h2>
+        <p class="mt-3 text-base text-surface-500 dark:text-surface-400 max-w-lg">A curated selection of projects I've worked on. Each one reflects my approach to clean, functional code.</p>
+      </div>
+
+      <!-- Project Cards -->
+      <div class="grid sm:grid-cols-2 gap-6 animate-on-scroll">
+
+        <!-- Project 1 -->
+        <article class="project-card group rounded-xl border border-surface-200/60 dark:border-surface-800/60 overflow-hidden hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300 bg-white dark:bg-surface-900">
+          <div class="aspect-[16/10] bg-surface-100 dark:bg-surface-800 flex items-center justify-center overflow-hidden">
+            <div class="text-center p-8">
+              <div class="w-12 h-12 mx-auto rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
+                </svg>
+              </div>
+              <p class="text-xs font-mono text-surface-400">Project Screenshot</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="text-lg font-semibold text-surface-900 dark:text-white group-hover:text-accent transition-colors">Personal Portfolio Website</h3>
+              <a href="#" class="shrink-0 p-1.5 rounded-md text-surface-400 hover:text-accent hover:bg-accent/10 transition-all" aria-label="View project">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                </svg>
+              </a>
+            </div>
+            <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-4">A clean, responsive portfolio site built with HTML, CSS, and JavaScript to showcase my work and skills.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">Tailwind CSS</span>
+              <span class="skill-tag">JavaScript</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card group rounded-xl border border-surface-200/60 dark:border-surface-800/60 overflow-hidden hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300 bg-white dark:bg-surface-900">
+          <div class="aspect-[16/10] bg-surface-100 dark:bg-surface-800 flex items-center justify-center overflow-hidden">
+            <div class="text-center p-8">
+              <div class="w-12 h-12 mx-auto rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-mono text-surface-400">Project Screenshot</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="text-lg font-semibold text-surface-900 dark:text-white group-hover:text-accent transition-colors">Student Information System</h3>
+              <a href="#" class="shrink-0 p-1.5 rounded-md text-surface-400 hover:text-accent hover:bg-accent/10 transition-all" aria-label="View project">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                </svg>
+              </a>
+            </div>
+            <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-4">A PHP-based CRUD application for managing student records with user authentication and role management.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">Bootstrap</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card group rounded-xl border border-surface-200/60 dark:border-surface-800/60 overflow-hidden hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300 bg-white dark:bg-surface-900">
+          <div class="aspect-[16/10] bg-surface-100 dark:bg-surface-800 flex items-center justify-center overflow-hidden">
+            <div class="text-center p-8">
+              <div class="w-12 h-12 mx-auto rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-3">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-mono text-surface-400">Project Screenshot</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="text-lg font-semibold text-surface-900 dark:text-white group-hover:text-accent transition-colors">E-Commerce Landing Page</h3>
+              <a href="#" class="shrink-0 p-1.5 rounded-md text-surface-400 hover:text-accent hover:bg-accent/10 transition-all" aria-label="View project">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                </svg>
+              </a>
+            </div>
+            <p class="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-4">A responsive product landing page with modern UI design, smooth animations, and mobile-first approach.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Placeholder -->
+        <article class="project-card group rounded-xl border border-dashed border-surface-300/80 dark:border-surface-700/80 overflow-hidden hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="aspect-[16/10] flex items-center justify-center">
+            <!-- intentionally blank -->
+          </div>
+          <div class="p-6 flex flex-col items-center justify-center text-center">
+            <div class="w-12 h-12 rounded-full bg-surface-200/60 dark:bg-surface-800 flex items-center justify-center mb-3 text-surface-400">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold text-surface-500 dark:text-surface-400 mb-1">More coming soon</h3>
+            <p class="text-sm text-surface-400 dark:text-surface-500">New projects are in the works.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT / FOOTER SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="contact" class="py-24 sm:py-32 bg-surface-100/50 dark:bg-surface-900/30">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <!-- Section Header -->
+      <div class="mb-12 animate-on-scroll">
+        <p class="text-sm font-mono font-medium text-accent tracking-wide mb-2">04 / Contact</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-white">Let's connect</h2>
+        <p class="mt-3 text-base text-surface-500 dark:text-surface-400 max-w-lg">Interested in collaborating or just want to say hello? Feel free to reach out through any of the platforms below.</p>
+      </div>
+
+      <!-- Contact Cards -->
+      <div class="grid sm:grid-cols-3 gap-6 mb-16 animate-on-scroll">
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/maruf_s400/" target="_blank" rel="noopener noreferrer"
+           class="contact-card group flex items-center gap-4 p-5 rounded-xl bg-white dark:bg-surface-900 border border-surface-200/60 dark:border-surface-800/60 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="w-10 h-10 shrink-0 rounded-lg bg-accent/10 text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-surface-800 dark:text-surface-200 group-hover:text-accent transition-colors">Instagram</p>
+            <p class="text-xs text-surface-400 dark:text-surface-500">@maruf_s400</p>
+          </div>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/kadalaustrali22-dev" target="_blank" rel="noopener noreferrer"
+           class="contact-card group flex items-center gap-4 p-5 rounded-xl bg-white dark:bg-surface-900 border border-surface-200/60 dark:border-surface-800/60 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="w-10 h-10 shrink-0 rounded-lg bg-accent/10 text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-surface-800 dark:text-surface-200 group-hover:text-accent transition-colors">GitHub</p>
+            <p class="text-xs text-surface-400 dark:text-surface-500">kadalaustrali22-dev</p>
+          </div>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:maruf@example.com"
+           class="contact-card group flex items-center gap-4 p-5 rounded-xl bg-white dark:bg-surface-900 border border-surface-200/60 dark:border-surface-800/60 hover:border-accent/40 dark:hover:border-accent/40 transition-all duration-300">
+          <div class="w-10 h-10 shrink-0 rounded-lg bg-accent/10 text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-surface-800 dark:text-surface-200 group-hover:text-accent transition-colors">Email</p>
+            <p class="text-xs text-surface-400 dark:text-surface-500">maruf@example.com</p>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="border-t border-surface-200/60 dark:border-surface-800/60">
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-surface-400 dark:text-surface-500">
+        &copy; 2026 Ma'ruf. Built with care.
+      </p>
+      <div class="flex items-center gap-3">
+        <a href="https://www.instagram.com/maruf_s400/" target="_blank" rel="noopener noreferrer"
+           class="p-2 rounded-lg text-surface-400 hover:text-accent hover:bg-accent/10 transition-all" aria-label="Instagram">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/kadalaustrali22-dev" target="_blank" rel="noopener noreferrer"
+           class="p-2 rounded-lg text-surface-400 hover:text-accent hover:bg-accent/10 transition-all" aria-label="GitHub">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll-to-top button -->
+  <button id="scroll-top"
+          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-accent text-white shadow-lg shadow-accent/20 opacity-0 invisible translate-y-4 transition-all duration-300 hover:bg-accent-dark"
+          aria-label="Scroll to top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
